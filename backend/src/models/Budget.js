@@ -5,17 +5,12 @@ const budgetSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    type: {
-        type: String,
-        required: true,
-    },
     amount: {
         type: Number,
         required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now,
+    type: {
+        type: String,
         required: true,
     },
 }, {
