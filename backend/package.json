@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Backend Restful API for AlkemyLabs JS Challenge",
   "main": "index.js",
   "scripts": {
