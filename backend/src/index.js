@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoDb = require('./database/database');
-//const apiRoutes = require('./router');
+const apiRoutes = require('./router');
 
 //* Initializations
 const app = express();
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({extended: true}));
 
 //* Routes
-//apiRoutes(app);
+apiRoutes(app);
 
 //* Starting the server 
 app.listen(port, () => {
