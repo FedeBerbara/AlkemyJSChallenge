@@ -1,1 +1,95 @@
-const budgetService = require('../services/budgetService');
+const budgetServices = require('../services/budgetServices');
+
+const createMovement = async (req, res) => {
+
+    let data = req.body
+
+    try {
+        const newMovement = await budgetServices.createOperation(data);
+        res.status(201).json({newMovement})
+    } catch (error) {
+        res.status(401).json({
+            message: error.message
+        })
+    }
+};
+
+const editMovement = async (req, res) => {
+
+    let data = req.body;
+    let movementEdited;
+
+    try {
+        movementEdited = await budgetServices.editOperation(req.params.id, data);
+        res.status(200).json({
+            message: "Movement modified successfully"
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
+const eraseMovement = async (req, res) => {
+
+    let deletedMovement; 
+
+    try {
+        deletedMovement = await budgetServices.deleteOperation(req.params.id);
+        res.status(200).json({
+            message: "Movement deleted successfully"
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
+const getMovements = async (req, res) => {
+
+    try {
+        const movements = await budgetServices.getOperationsSorted();
+        res.status(200).json({ movements });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
+const getMovement = async (req, res) => {
+
+    try {
+        const movement = await budgetServices.getOperation(req.params.id);
+        res.status(200).json({ movement })
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
+const getMovementsByType = async (req, res) => {
+
+    let movementType = req.params.type;
+
+    try {
+        movementType = await budgetServices.getOperationsSortedByType(movementType);
+        res.status(200).json({ movementType });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });
+    }
+};
+
+module.exports = {
+    createMovement,
+    editMovement,
+    eraseMovement,
+    getMovements,
+    getMovement,
+    getMovementsByType,
+}
