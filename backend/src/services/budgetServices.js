@@ -20,17 +20,19 @@ const deleteOperation = async id => await Budget.findByIdAndDelete( id );
 
 const getOperation = async id => await Budget.findById( id );
 
+const getOperations = async () => await Budget.find();
+
 const getOperationsSorted = async () => {
     return await Budget.find().sort({
-        createdAt: -1
-    });
+        date: -1
+    }).limit(10);
 };
 
 const getOperationsSortedByType = async movementType => {
     return await Budget.find({
         type: movementType
     }).sort({
-        createdAt: -1
+        date: -1
     });
 }
 
@@ -41,6 +43,7 @@ module.exports = {
     editOperation,
     deleteOperation,
     getOperation,
+    getOperations,
     getOperationsSorted,
     getOperationsSortedByType,
     getBalance,

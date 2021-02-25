@@ -47,17 +47,29 @@ const eraseMovement = async (req, res) => {
     }
 };
 
-const getMovements = async (req, res) => {
+const getMovementsSorted = async (req, res) => {
 
     try {
-        const movements = await budgetServices.getOperationsSorted();
-        res.status(200).json({ movements });
+        const movementsSorted = await budgetServices.getOperationsSorted();
+        res.status(200).json({ movementsSorted });
     } catch (error) {
         res.status(500).json({
             message: error.message
         });
     }
 };
+
+const getAllMovements = async (req, res) => {
+
+    try {
+        const allMovements = await budgetServices.getOperations();
+        res.status(200).json({ allMovements });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        });      
+    }
+}
 
 const getMovement = async (req, res) => {
 
@@ -89,7 +101,8 @@ module.exports = {
     createMovement,
     editMovement,
     eraseMovement,
-    getMovements,
+    getMovementsSorted,
     getMovement,
+    getAllMovements,
     getMovementsByType,
 }
