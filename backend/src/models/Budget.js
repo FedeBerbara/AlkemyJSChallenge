@@ -13,8 +13,13 @@ const budgetSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    date: {
+        type: Date,
+        default: Date.now(),
+        required: true,
+    },
 }, {
-    timestamps: true,
+    //timestamps: true,
     collection: 'Budgets'
 });
 
