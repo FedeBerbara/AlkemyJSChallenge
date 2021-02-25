@@ -2,11 +2,12 @@ const express = require('express');
 const router = express.Router(); 
 const budgetCtrl = require('../controller/budgetCtrl');
 
-router.get('/', budgetCtrl.getMovements);
-router.get('/id/:id', budgetCtrl.getMovement);
-router.get('/type/:type', budgetCtrl.getMovementsByType);
 router.post('/add', budgetCtrl.createMovement);
-router.put('/update/:id', budgetCtrl.editMovement);
-router.delete('/erase/:id', budgetCtrl.eraseMovement);
+router.get('/', budgetCtrl.getAllMovements);
+router.get('/:id', budgetCtrl.getMovement);
+router.get('/sorted/sorted', budgetCtrl.getMovementsSorted);
+router.get('/type/:type', budgetCtrl.getMovementsByType);
+router.put('/:id', budgetCtrl.editMovement);
+router.delete('/:id', budgetCtrl.eraseMovement);
 
 module.exports = router;
