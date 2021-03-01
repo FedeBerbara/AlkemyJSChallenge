@@ -24,7 +24,7 @@ export const createMovementApi = async (movementData) => {
 export const getMovementsApi = async () => {
 
     try {
-        const response = await fetch(`${baseURI}/`);
+        const response = await fetch(`${baseURI}/type/sorted`);
 
         if (response.ok) {
             const movements = await response.json();
