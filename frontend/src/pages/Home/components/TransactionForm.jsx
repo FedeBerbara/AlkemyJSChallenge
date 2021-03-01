@@ -10,7 +10,7 @@ const TransactionForm = () => {
         concept: '',
         amount: '',
         type: '',
-        date: new Date(),
+        date: '',
     });
 
     const handleChange = e => {
@@ -49,7 +49,7 @@ const TransactionForm = () => {
     };
 
     return (
-        <div className="col-12 col-lg-4 form-container">
+        <div className="col-12 form-container form-group">
             <div className="form-header">
                 <h4 className="form-description">Complete the form to upload an operation</h4>
             </div>
@@ -68,7 +68,7 @@ const TransactionForm = () => {
                     <label htmlFor="amount">Amount: </label>
                     <input name="amount" 
                         value={movementData.amount} 
-                        type="text" 
+                        type="number" 
                         onChange={handleChange}
                         className="form-control" 
                         placeholder="¿How much?" 
